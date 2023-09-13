@@ -57,30 +57,7 @@
     <div id="huge-zero">0</div>
     <div id="not-endorsed">(Not endorsed by the Rust Foundation)</div>
     <div id="source"><a href="https://github.com/MetaphorC/dayssincelastrustdrama">Source Code</a></div>
-    <div id="grey-box">
-        <b>updated daily!</b><br>next update in about <span id="remaining-hours"></span> hours
-    </div>
+    <div id="grey-box"><b>updated daily!</b><br>next update in about 15 hours</div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            function updateTimer() {
-                const now = new Date();
-                const istOffset = 330 * 60 * 1000; // IST is UTC+5:30
-                const midnightIST = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0) + istOffset;
-
-                const remainingMilliseconds = midnightIST - now;
-                const remainingHours = Math.floor(remainingMilliseconds / (60 * 60 * 1000));
-
-                const remainingHoursElement = document.getElementById("remaining-hours");
-                remainingHoursElement.textContent = remainingHours;
-            }
-
-            // Call the updateTimer function initially
-            updateTimer();
-
-            // Update the timer every minute (60,000 milliseconds)
-            setInterval(updateTimer, 60000);
-        });
-    </script>
-</body>
+ </body>
 </html>
