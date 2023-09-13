@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +24,7 @@
             font-size: 30em;
             color: #fff;
         }
-
+        
         #not-endorsed {
             font-size: 1em;
             color: #fff;
@@ -33,11 +32,55 @@
             bottom: 10px; /* Adjust the distance from the bottom as needed */
             right: 10px; /* Adjust the distance from the right as needed */
         }
+
+        #source {
+            font-size: 1em;
+            color: #fff;
+            position: absolute;
+            bottom: 10px; /* Adjust the distance from the bottom as needed */
+            left: 10px; /* Adjust the distance from the left as needed */
+        }
+
+        #grey-box {
+            background-color: #ccc; /* Grey background color */
+            color: #000; /* Text color */
+            font-size: 1em;
+            padding: 10px; /* Padding around the content */
+            position: absolute;
+            top: 0px; /* Adjust the distance from the bottom as needed */
+            right: 0px; /* Center horizontally */
+        }
     </style>
 </head>
 <body>
     <div id="title">Days since last Rust drama:</div>
     <div id="huge-zero">0</div>
     <div id="not-endorsed">(Not endorsed by the Rust Foundation)</div>
+    <div id="source"><a href="https://github.com/MetaphorC/dayssincelastrustdrama">Source Code</a></div>
+    <div id="grey-box">
+        <b>updated daily!</b><br>next update in about <span id="remaining-hours"></span> hours
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function updateTimer() {
+                const now = new Date();
+                const istOffset = 330 * 60 * 1000; // IST is UTC+5:30
+                const midnightIST = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0) + istOffset;
+
+                const remainingMilliseconds = midnightIST - now;
+                const remainingHours = Math.floor(remainingMilliseconds / (60 * 60 * 1000));
+
+                const remainingHoursElement = document.getElementById("remaining-hours");
+                remainingHoursElement.textContent = remainingHours;
+            }
+
+            // Call the updateTimer function initially
+            updateTimer();
+
+            // Update the timer every minute (60,000 milliseconds)
+            setInterval(updateTimer, 60000);
+        });
+    </script>
 </body>
 </html>
